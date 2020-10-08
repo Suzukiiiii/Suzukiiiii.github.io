@@ -1,7 +1,15 @@
 console.log('connected');
 const boardDiv = document.querySelector('#board');
-let tiles = [[],[],[]];
+const tiles = [[],[],[]];
 let board;
+
+const player1 = new Player('player1','X');
+const player2 = new Player('player2','O');
+let curPlayer = player1;
+
+const playerTurn = () =>{
+
+}
 
 const onClickTileDivHandler = (event) =>{
     //console.log(event);
@@ -13,7 +21,6 @@ const onClickTileDivHandler = (event) =>{
 
         console.log(tile.tileDiv.value);
     }
-    
     
 }
 
@@ -31,7 +38,6 @@ const createBoard = ()=>{
             // create Div, append to row, (potentially)add Event Listener
             const tileDiv = document.createElement('div');
             tileDiv.setAttribute('class','tile');
-            //tileDiv.addEventListener('click',onClickTileDivHandler);
             rowDiv.append(tileDiv);
             const tile = new Tile(tileDiv);
             tiles[i][j] = tile;

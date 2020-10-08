@@ -19,9 +19,9 @@ body{
 
 .tile{
     width: 150px;
-  height: 150px;
-  background-color: crimson;
-  border: 5px solid black;
+    height: 150px;
+    background-color: crimson;
+    border: 5px solid black;
 
 }
 
