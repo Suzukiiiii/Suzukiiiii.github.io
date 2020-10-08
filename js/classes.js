@@ -27,13 +27,12 @@ class Board{
     };
     
     reset(){
-
+        this.tiles
     };
 
     // Return the value of the tiles that are lined up 3 in a row
     findWinner = () =>{
         // Check Rows
-        let returnValue = '';
         const board = this.tiles;
         for(let i=0;i<3;i++){
             
@@ -41,6 +40,7 @@ class Board{
                 return board[i][0].tileDiv.value;
             }
         }
+        
         // Check Column
         for(let i=0;i<3;i++){
             if(board[0][i].value===board[1][i].value && board[1][i].value === board[2][i].value){
@@ -48,11 +48,14 @@ class Board{
                 return board[i][0].tileDiv.value;
             }
         }
+        
         // Check top left corner to bottom right corner
         if(board[0][0].value=== board[1][1].value && board[1][1].value ===board[2][2].value) return board[0][0].tileDiv.value;
+        
         // check bottom left corner to top right corner
         if(board[0][2].value=== board[1][1].value&& board[1][1].value ===board[2][0].value) return board[0][2].tileDiv.value;
 
+        return 'no Winner :(';
     };
 };
 
