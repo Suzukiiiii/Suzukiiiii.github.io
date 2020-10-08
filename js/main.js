@@ -1,7 +1,14 @@
 console.log('connected');
 const boardDiv = document.querySelector('#board');
 let tiles = [[],[],[]];
+let board;
 
+const onClickTileDivHandler = (event) =>{
+    console.log(event);
+    console.log(board.findTileByTileDiv(event.target));
+}
+
+// Create 3x3 board of tiles
 const createBoard = ()=>{
     for(let i=0;i<3;i++){
 
@@ -12,9 +19,10 @@ const createBoard = ()=>{
         boardDiv.append(rowDiv);
         for(let j=0;j<3;j++){
             
-            // create Div, append to row, add Event Listener
+            // create Div, append to row, (potentially)add Event Listener
             const tileDiv = document.createElement('div');
             tileDiv.setAttribute('class','tile');
+            //tileDiv.addEventListener('click',onClickTileDivHandler);
             rowDiv.append(tileDiv);
             const tile = new Tile(tileDiv);
             tiles[i][j] = tile;
@@ -24,15 +32,5 @@ const createBoard = ()=>{
     // create new Board instance with tiles
     return new Board(tiles);
 };
-
-const board = createBoard();
-//  tileDiv = document.querySelector('.tile');
-
-//  console.log(tileDiv);
-
-//  tile1 = new Tile(tileDiv);
-
-
-//  //tile1.tileDiv = tileDiv
-//  console.log(tile1);
-//  console.log(tile1.tileDiv);
+boardDiv.addEventListener('click',onClickTileDivHandler);
+board = createBoard();
