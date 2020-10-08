@@ -4,8 +4,17 @@ let tiles = [[],[],[]];
 let board;
 
 const onClickTileDivHandler = (event) =>{
-    console.log(event);
-    console.log(board.findTileByTileDiv(event.target));
+    //console.log(event);
+
+    if(event.target.className === 'tile'){
+        console.log(event.target);
+        const tile = board.findTileByTileDiv(event.target);
+        event.target.value = 'O'
+
+        console.log(tile.tileDiv.value);
+    }
+    
+    
 }
 
 // Create 3x3 board of tiles

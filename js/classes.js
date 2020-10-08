@@ -2,7 +2,6 @@ class Tile{
     
     constructor(tileDiv){
         this.tileDiv = tileDiv;
-        this.value = '';
     };
 };
 
@@ -37,6 +36,7 @@ class Player{
     constructor(name){
         this.name = name;
         this.score = 0;
+        this.value = '-';
     }
     
 }
