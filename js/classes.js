@@ -49,9 +49,9 @@ class Board{
             }
         }
         // Check top left corner to bottom right corner
-        if(board[0][0].value===board[1][1].value===board[2][2].value) return board[0][0].tileDiv.value;
+        if(board[0][0].value=== board[1][1].value && board[1][1].value ===board[2][2].value) return board[0][0].tileDiv.value;
         // check bottom left corner to top right corner
-        if(board[0][2].value===board[1][1].value===board[2][0].value) return board[0][2].tileDiv.value;
+        if(board[0][2].value=== board[1][1].value&& board[1][1].value ===board[2][0].value) return board[0][2].tileDiv.value;
 
     };
 };
