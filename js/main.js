@@ -49,3 +49,4 @@ const createBoard = ()=>{
 };
 boardDiv.addEventListener('click',onClickTileDivHandler);
 board = createBoard();
+board.reset();

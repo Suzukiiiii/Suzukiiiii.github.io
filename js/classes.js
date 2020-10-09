@@ -27,33 +27,42 @@ class Board{
     };
     
     reset(){
-        this.tiles
+        // go into each tileDiv, reset the value and change to default CSS
+        this.tiles.forEach((row)=>{
+            row.forEach((tile)=>{
+                const div = tile.tileDiv;
+                div.value = "";
+                
+            });
+        });
     };
 
     // Return the value of the tiles that are lined up 3 in a row
     findWinner = () =>{
-        // Check Rows
+        
         const board = this.tiles;
+
+        // Check Rows
         for(let i=0;i<3;i++){
             
-            if(board[i][0].value===board[i][1].value && board[i][1].value=== board[i][2].value){
+            if(board[i][0].tileDiv.value===board[i][1].tileDiv.value && board[i][1].tileDiv.value=== board[i][2].tileDiv.value){
                 return board[i][0].tileDiv.value;
             }
         }
         
         // Check Column
         for(let i=0;i<3;i++){
-            if(board[0][i].value===board[1][i].value && board[1][i].value === board[2][i].value){
+            if(board[0][i].tileDiv.value===board[1][i].tileDiv.value && board[1][i].tileDiv.value === board[2][i].tileDiv.value){
                 console.log('here');
                 return board[i][0].tileDiv.value;
             }
         }
         
         // Check top left corner to bottom right corner
-        if(board[0][0].value=== board[1][1].value && board[1][1].value ===board[2][2].value) return board[0][0].tileDiv.value;
+        if(board[0][0].tileDiv.value=== board[1][1].tileDiv.value && board[1][1].tileDiv.value ===board[2][2].tileDiv.value) return board[0][0].tileDiv.value;
         
         // check bottom left corner to top right corner
-        if(board[0][2].value=== board[1][1].value&& board[1][1].value ===board[2][0].value) return board[0][2].tileDiv.value;
+        if(board[0][2].tileDiv.value=== board[1][1].tileDiv.value&& board[1][1].tileDiv.value ===board[2][0].tileDiv.value) return board[0][2].tileDiv.value;
 
         return 'no Winner :(';
     };
