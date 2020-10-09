@@ -3,16 +3,19 @@ console.log('connected');
 // DOM objects
 const boardDiv = document.querySelector('#board');
 const gameLog = document.querySelector('#gamelog');
+const gameStartButton = document.querySelector('#startGame');
 
 //TicTacToe Objects
 let board;
 const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 let curPlayer = player1;
-let gameActive = true;
+let gameActive = false;
 
 const maxMoves = 9;
 let curMoves = 0;
+
+
 /**
  * playerTurn
  * @param {*} targetDiv 
@@ -80,6 +83,19 @@ const createBoard = ()=>{
     // create new Board instance with tiles
     return new Board(tiles);
 };
-boardDiv.addEventListener('click',onClickTileDivHandler);
-board = createBoard();
-board.reset();
+
+const startGame = (event)=>{
+    event.preventDefault();
+    board.reset();
+    gameActive = true;
+    curPlayer = player1;
+    gameLog.value = `${player1.name}'s turn`
+}
+
+const init = () =>{
+    boardDiv.addEventListener('click',onClickTileDivHandler);
+    gameStartButton.addEventListener('click',startGame);
+    board = createBoard();
+}
+
+init();
