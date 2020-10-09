@@ -50,6 +50,7 @@ const playerTurn = (targetDiv) =>{
     }
 }
 
+// calls playerTurn() if tile was clicked
 const onClickTileDivHandler = (event) =>{
 
     if(event.target.className === 'tile'){
@@ -89,6 +90,7 @@ const startGame = (event)=>{
     board.reset();
     gameActive = true;
     curPlayer = player1;
+    curMoves = 0;
     gameLog.value = `${player1.name}'s turn`
 }
 
