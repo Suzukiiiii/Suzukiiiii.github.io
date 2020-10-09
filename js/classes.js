@@ -51,8 +51,7 @@ class Board{
         // Check Column
         for(let i=0;i<3;i++){
             if(board[0][i].tileDiv.value===board[1][i].tileDiv.value && board[1][i].tileDiv.value === board[2][i].tileDiv.value){
-                console.log('here');
-                return board[i][0].tileDiv.value;
+                return board[0][i].tileDiv.value;
             }
         }
         
