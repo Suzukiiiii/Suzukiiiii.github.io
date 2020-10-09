@@ -31,8 +31,9 @@ class Board{
         this.tiles.forEach((row)=>{
             row.forEach((tile)=>{
                 const div = tile.tileDiv;
-                div.value = "";
-                
+                div.value = '';
+                div.classList.remove('X');
+                div.classList.remove('O');
             });
         });
     };

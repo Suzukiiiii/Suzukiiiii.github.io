@@ -1,6 +1,6 @@
 console.log('connected');
 const boardDiv = document.querySelector('#board');
-const tiles = [[],[],[]];
+
 let board;
 
 const player1 = new Player('player1','X');
@@ -18,7 +18,7 @@ const onClickTileDivHandler = (event) =>{
         console.log(event.target);
         const tile = board.findTileByTileDiv(event.target);
         event.target.value = 'O'
-
+        event.target.classList.add('O');
         console.log(tile.tileDiv.value);
     }
     
@@ -26,6 +26,8 @@ const onClickTileDivHandler = (event) =>{
 
 // Create 3x3 board of tiles
 const createBoard = ()=>{
+    // make 2D array of tiles
+    const tiles = [[],[],[]];
     for(let i=0;i<3;i++){
 
         // create Div of class row, append to board div
