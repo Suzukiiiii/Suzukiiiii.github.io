@@ -1,27 +1,46 @@
 console.log('connected');
 
+// DOM objects
 const boardDiv = document.querySelector('#board');
 const gameLog = document.querySelector('#gamelog');
 
+//TicTacToe Objects
 let board;
-
 const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 let curPlayer = player1;
-let gameActive = false;
+let gameActive = true;
+
+const maxMoves = 9;
+let curMoves = 0;
+/**
+ * playerTurn
+ * @param {*} targetDiv 
+ * Takes a div Element as an argument.
+ * If the game is currently active and the player made a legal move,
+ * this function will process that move.
+ */
 const playerTurn = (targetDiv) =>{
     if(targetDiv.value === '' && gameActive){
+        curMoves ++;
         targetDiv.value = curPlayer.value;
         targetDiv.classList.add(curPlayer.value);
-
+        console.log(curMoves);
+        if(board.findWinner()===curPlayer.value){
+            gameActive = false;
+            curPlayer.score ++;
+        }
         if (curPlayer === player1 && gameActive){
-
+            gameLog.value += `\n${player2.name}'s turn`;
             curPlayer = player2;
         }
         else if(curPlayer === player2 && gameActive){
+            gameLog.value += `\n${player1.name}'s turn`;
             curPlayer = player1;
         }
-        
+        if(curMoves === maxMoves){
+            gameLog.value += '\nGame is a draw!';
+        }
     }
 }
 
