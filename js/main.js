@@ -28,15 +28,15 @@ const playerTurn = (targetDiv) =>{
         curMoves ++;
         targetDiv.value = curPlayer.value;
         targetDiv.classList.add(curPlayer.value);
-        console.log(curMoves);
-        if(curMoves === maxMoves){
-            gameLog.value += '\nGame is a draw!';
-            gameActive = false;
-        }
+        
         if(board.findWinner()===curPlayer.value){
             gameActive = false;
             gameLog.value += `\n${curPlayer.name} wins!`;
             curPlayer.score ++;
+        }
+        if(curMoves === maxMoves && gameActive){
+            gameLog.value += '\nGame is a draw!';
+            gameActive = false;
         }
         if (curPlayer === player1 && gameActive){
             gameLog.value += `\n${player2.name}'s turn`;
