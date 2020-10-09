@@ -7,19 +7,23 @@ const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 let curPlayer = player1;
 
-const playerTurn = () =>{
+const playerTurn = (targetDiv) =>{
+    if(targetDiv.value === ''){
+        targetDiv.value = curPlayer.value;
+        targetDiv.classList.add(curPlayer.value);
 
+        if (curPlayer === player1){
+            curPlayer = player2;
+        }
+        else curPlayer = player1;
+    }
 }
 
 const onClickTileDivHandler = (event) =>{
     //console.log(event);
 
     if(event.target.className === 'tile'){
-        console.log(event.target);
-        //const tile = board.findTileByTileDiv(event.target);
-        event.target.value = 'O'
-        event.target.classList.add('O');
-        console.log(tile.tileDiv.value);
+        playerTurn(event.target);
     }
     
 }

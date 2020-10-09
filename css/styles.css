@@ -1,5 +1,5 @@
 body{
-    background-color: aqua;
+    background-color: navy;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,7 +20,7 @@ body{
 .tile{
     width: 150px;
     height: 150px;
-    background-color: crimson;
+    background-color: darkcyan;
     border: 5px solid black;
 
 }
