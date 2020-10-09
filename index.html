@@ -6,8 +6,16 @@
     <link href="/css/styles.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>    
-    <div id="board">
+<body>
+    <div id="gamePanel">
+        <div id="players"></div>
+        <div id="controlButtons">
+            <button id="startGame">Start Game</button>
+        </div>
+    </div>    
+    <div id="board"></div>
+    <div id="log">
+        <textarea id = "gamelog" readonly></textarea>
     </div>
     <script src="/js/classes.js"></script>
     <script src="/js/main.js"></script>

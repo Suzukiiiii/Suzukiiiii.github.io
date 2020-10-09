@@ -1,26 +1,31 @@
 console.log('connected');
+
 const boardDiv = document.querySelector('#board');
+const gameLog = document.querySelector('#gamelog');
 
 let board;
 
 const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 let curPlayer = player1;
-
+let gameActive = false;
 const playerTurn = (targetDiv) =>{
-    if(targetDiv.value === ''){
+    if(targetDiv.value === '' && gameActive){
         targetDiv.value = curPlayer.value;
         targetDiv.classList.add(curPlayer.value);
 
-        if (curPlayer === player1){
+        if (curPlayer === player1 && gameActive){
+
             curPlayer = player2;
         }
-        else curPlayer = player1;
+        else if(curPlayer === player2 && gameActive){
+            curPlayer = player1;
+        }
+        
     }
 }
 
 const onClickTileDivHandler = (event) =>{
-    //console.log(event);
 
     if(event.target.className === 'tile'){
         playerTurn(event.target);
@@ -41,7 +46,7 @@ const createBoard = ()=>{
         boardDiv.append(rowDiv);
         for(let j=0;j<3;j++){
             
-            // create Div, append to row, (potentially)add Event Listener
+            // create Div, append to row, and add to tile array
             const tileDiv = document.createElement('div');
             tileDiv.setAttribute('class','tile');
             rowDiv.append(tileDiv);

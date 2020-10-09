@@ -1,17 +1,21 @@
 body{
     background-color: navy;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
 }
-
+#gamePanel{
+    display: flex;
+}
 #board{
     border: 5px solid black;
     display:flex;
     flex-direction: column;
 
 }
-
+#log{
+    display:flex;
+}
 .row{
     display: flex;
 
