@@ -16,7 +16,7 @@ const onClickTileDivHandler = (event) =>{
 
     if(event.target.className === 'tile'){
         console.log(event.target);
-        const tile = board.findTileByTileDiv(event.target);
+        //const tile = board.findTileByTileDiv(event.target);
         event.target.value = 'O'
         event.target.classList.add('O');
         console.log(tile.tileDiv.value);

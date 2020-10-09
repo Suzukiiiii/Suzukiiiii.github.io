@@ -16,9 +16,6 @@ class Board{
         let tileToReturn;
         this.tiles.forEach((row)=>{
             row.forEach((tile)=>{
-             console.log(tile.tileDiv);
-             console.log(tileDivIn);
-            
              if(tile.tileDiv===tileDivIn)
                  tileToReturn = tile;
             })
