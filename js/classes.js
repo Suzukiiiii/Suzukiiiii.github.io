@@ -117,11 +117,7 @@ class TicTacToe{
      */
     playerTurn = (targetDiv,value) =>{
 
-        console.log('param1: '+targetDiv);
-        console.log('param2: '+value);
-        console.log(this.gameActive);
         if(targetDiv.value === '' && this.gameActive){
-            console.log(targetDiv+'.value = null')
             this.curMoves ++;
             targetDiv.value = value;
             targetDiv.classList.add(value);
@@ -134,6 +130,7 @@ class TicTacToe{
             if(this.curMoves === 9 && this.gameActive){
                 this.gameLog.value += '\nGame is a draw!';
                 this.gameActive = false;
+                this.tie ++;
             }
             if (this.curPlayer === this.player1 && this.gameActive){
                 this.gameLog.value += `\n${this.player2.name}'s turn`;
@@ -142,8 +139,7 @@ class TicTacToe{
             else if(this.curPlayer === this.player2 && this.gameActive){
                 this.gameLog.value += `\n${this.player1.name}'s turn`;
                 this.curPlayer = this.player1;
-            }
-            
+            } 
         }
     }
 
