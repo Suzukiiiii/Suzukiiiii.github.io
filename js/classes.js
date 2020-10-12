@@ -78,12 +78,76 @@ class Player{
 
 //
 class TicTacToe{
-    constructor(player1,player2,board){
+    constructor(player1,player2,board,gameLog){
         this.player1 = player1;
         this.player2 = player2;
+        this.curPlayer = player1;
+        this.tie = 0;
         this.board = board;
         this.gameActive = false;
+        this.moves = []; // array of moves to be played in order
+        this.curMoves = 0;
+        this.gameLog = gameLog;
     };
 
+    /**
+     * 
+     * 
+     */
+    startGame = (event) =>{
+        event.preventDefault();
+        this.board.reset();
+        this.gameActive = true;
+        this.curPlayer = player1;
+        this.curMoves = 0;
+        this.gameLog.value = `${this.curPlayer.name}'s turn`
+    }
+    /**
+     * replay()
+     * 
+     * foreach move in moves[]
+     * 
+     * setTimeout(playGame(move.div,move.value))
+     */
 
+    /**
+     * 
+     * @param {*} targetDiv 
+     * @param {*} value 
+     */
+    playerTurn = (targetDiv,value) =>{
+
+        console.log('param1: '+targetDiv);
+        console.log('param2: '+value);
+        console.log(this.gameActive);
+        if(targetDiv.value === '' && this.gameActive){
+            console.log(targetDiv+'.value = null')
+            this.curMoves ++;
+            targetDiv.value = value;
+            targetDiv.classList.add(value);
+            
+            if(this.board.findWinner()===value){
+                this.gameActive = false;
+                this.gameLog.value += `\n${this.curPlayer.name} wins!`;
+                this.curPlayer.score ++;
+            }
+            if(this.curMoves === 9 && this.gameActive){
+                this.gameLog.value += '\nGame is a draw!';
+                this.gameActive = false;
+            }
+            if (this.curPlayer === this.player1 && this.gameActive){
+                this.gameLog.value += `\n${this.player2.name}'s turn`;
+                this.curPlayer = this.player2;
+            }
+            else if(this.curPlayer === this.player2 && this.gameActive){
+                this.gameLog.value += `\n${this.player1.name}'s turn`;
+                this.curPlayer = this.player1;
+            }
+            
+        }
+    }
+
+    /**
+     * findwinner?
+     */
 };

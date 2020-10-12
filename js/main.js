@@ -6,6 +6,7 @@ const gameLog = document.querySelector('#gamelog');
 const gameStartButton = document.querySelector('#startGame');
 
 //TicTacToe Objects
+let ticTacToe;
 let board;
 const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
@@ -54,7 +55,9 @@ const playerTurn = (targetDiv) =>{
 const onClickTileDivHandler = (event) =>{
 
     if(event.target.className === 'tile'){
-        playerTurn(event.target);
+        //playerTurn(event.target);
+        //console.log(curPlayer);
+        ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
     }
     
 }
@@ -86,18 +89,21 @@ const createBoard = ()=>{
 };
 
 const startGame = (event)=>{
-    event.preventDefault();
-    board.reset();
-    gameActive = true;
-    curPlayer = player1;
-    curMoves = 0;
-    gameLog.value = `${player1.name}'s turn`
+    // event.preventDefault();
+    // board.reset();
+    // gameActive = true;
+    // curPlayer = player1;
+    // curMoves = 0;
+    // gameLog.value = `${player1.name}'s turn`
 }
 
 const init = () =>{
-    boardDiv.addEventListener('click',onClickTileDivHandler);
-    gameStartButton.addEventListener('click',startGame);
+    
     board = createBoard();
+    ticTacToe = new TicTacToe(player1,player2,board,gameLog);
+    boardDiv.addEventListener('click',onClickTileDivHandler);
+    gameStartButton.addEventListener('click',(ticTacToe.startGame));
+    
 }
 
 init();
