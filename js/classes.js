@@ -11,7 +11,9 @@ class Board{
         this.tiles = tiles;
     };
 
+
     // go through each tile in board and return the tile object if their Div matches input Div
+    // used for debugging
     findTileByTileDiv(tileDivIn){
         let tileToReturn;
         this.tiles.forEach((row)=>{
@@ -88,6 +90,7 @@ class TicTacToe{
     constructor(player1,player2,board,gameLog){
         this.player1 = player1;
         this.player2 = player2;
+        this.firstPlayer = player1;
         this.curPlayer = player1;
         this.tie = 0;
         this.board = board;
@@ -121,7 +124,7 @@ class TicTacToe{
     startGame = () =>{
         this.board.reset();
         this.gameActive = true;
-        this.curPlayer = player1;
+        this.curPlayer = this.firstPlayer;
         this.curMoves = 0;
         this.gameLog.value = `${this.curPlayer.name}'s turn`
         if(this.isReplay === false){

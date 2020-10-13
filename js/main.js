@@ -6,6 +6,7 @@ const gameLog = document.querySelector('#gamelog');
 const gameStartButton = document.querySelector('#startGame');
 const replayGameButton = document.querySelector('#replayGame');
 const scores = document.querySelectorAll('.score');
+const firstPlayerRadio = document.getElementsByName('first');
 
 //TicTacToe Objects
 let ticTacToe;
@@ -50,8 +51,26 @@ const createBoard = ()=>{
     return new Board(tiles);
 };
 
-const startGame = (event)=>{
+const getFirstPlayerFromRadioButton = () =>{
+    let returnVal;
+    for(let i=0;i<firstPlayerRadio.length;i ++){
+        if(firstPlayerRadio[i].checked){
+            returnVal = firstPlayerRadio[i].value;
+        }
+    }
+
+    return returnVal;
+}
+
+const startButtonClicked = (event)=>{
     event.preventDefault();
+    
+    if(getFirstPlayerFromRadioButton() === 'player1'){
+        ticTacToe.firstPlayer = ticTacToe.player1;
+    }
+    else{
+        ticTacToe.firstPlayer = ticTacToe.player2;
+    }
     boardDiv.addEventListener('click',onClickTileDivHandler);
     ticTacToe.isReplay = false;
     ticTacToe.startGame();
@@ -67,7 +86,7 @@ const init = () =>{
     
     board = createBoard();
     ticTacToe = new TicTacToe(player1,player2,board,gameLog);
-    gameStartButton.addEventListener('click',startGame);
+    gameStartButton.addEventListener('click',startButtonClicked);
     replayGameButton.addEventListener('click',replayGame);
     
 }
