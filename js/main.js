@@ -21,6 +21,10 @@ const onClickTileDivHandler = (event) =>{
         scores[1].innerText = ticTacToe.tie;
         scores[2].innerText = ticTacToe.player2.score;
     } 
+
+    if (ticTacToe.gameActive === false){
+        replayGameButton.disabled = false;
+    }
 }
 
 // Create 3x3 board of tiles
@@ -63,6 +67,7 @@ const getFirstPlayerFromRadioButton = () =>{
 const startButtonClicked = (event)=>{
     event.preventDefault();
     
+    replayGameButton.disabled = true;
     if(getFirstPlayerFromRadioButton() === 'player1'){
         ticTacToe.firstPlayer = ticTacToe.player1;
     }
