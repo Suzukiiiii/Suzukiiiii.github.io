@@ -100,7 +100,20 @@ class TicTacToe{
         this.gameLog = gameLog;
         this.isReplay = false;
     };
+    
+    /**
+     * Returns the next tile that will win the game, if filled
+     * If there is no tile to be filled, return null;
+     */
+    findWinningMove =()=>{
+        const myBoard = this.board.tiles;
+        let winningTile;
 
+        
+
+
+        return winningTile;
+    }
     /**
      * suggest optimal move for current player
      */
