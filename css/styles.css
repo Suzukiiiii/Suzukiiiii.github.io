@@ -26,6 +26,7 @@ body{
 }
 .score{
     color: white;
+    margin: 5px;
 }
 .tile{
     width: 150px;

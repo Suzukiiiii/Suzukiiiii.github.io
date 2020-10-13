@@ -4,6 +4,7 @@ console.log('connected');
 const boardDiv = document.querySelector('#board');
 const gameLog = document.querySelector('#gamelog');
 const gameStartButton = document.querySelector('#startGame');
+const scores = document.querySelectorAll('.score');
 
 //TicTacToe Objects
 let ticTacToe;
@@ -17,7 +18,9 @@ const onClickTileDivHandler = (event) =>{
     if(event.target.className === 'tile'){
         ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
         //update player scores and tie
-
+        scores[0].innerText = ticTacToe.player1.score;
+        scores[1].innerText = ticTacToe.tie;
+        scores[2].innerText = ticTacToe.player2.score;
     } 
 }
 
@@ -57,3 +60,5 @@ const init = () =>{
 }
 
 init();
+
+console.log(scores);
