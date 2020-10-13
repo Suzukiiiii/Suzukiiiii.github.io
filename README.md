@@ -32,6 +32,9 @@ Once the initial JavaScript classes were made, I drew up a wire frame and made t
 ### Win Conditions
 To find a winner, I made a method in the Board class which looked at its Tiles to see if there were any pieces that were three in a row. It would check rows, then columns, and finally both diagonals. If a three in a row happened, then the current player would win, because you can only win on your own turn. This method would be called on every turn, and the game would continue if it returned nothing.
 
+## Gameplay
+Whenever the board was clicked
+
 ## WIP
 Currently working on the AI that would play a perfect game (draw or win every time).
 May indicate the winning tiles
