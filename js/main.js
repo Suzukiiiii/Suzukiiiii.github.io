@@ -1,5 +1,3 @@
-console.log('connected');
-
 // DOM objects
 const boardDiv = document.querySelector('#board');
 const gameLog = document.querySelector('#gamelog');
