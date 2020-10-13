@@ -99,8 +99,17 @@ class TicTacToe{
     };
 
     /**
+     * swap the X and O values of players
+     */
+    swapPieces = () =>{
+        const tmp = this.player1.value;
+        this.player1.value = this.player2.value;
+        this.player2.value = tmp;
+    }
+
+    /**
      * 
-     * 
+     * Sets inital game state
      */
     startGame = () =>{
         this.board.reset();
@@ -110,12 +119,9 @@ class TicTacToe{
         this.curMoves = 0;
         this.gameLog.value = `${this.curPlayer.name}'s turn`
     }
+    
     /**
-     * replay()
-     * 
-     * foreach move in moves[]
-     * 
-     * setTimeout(playGame(move.div,move.value))
+     * Plays back each move of the last played game, with 2 second delay betwen each move
      */
     replay = () =>{
         this.startGame();
