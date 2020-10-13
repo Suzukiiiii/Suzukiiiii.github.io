@@ -52,6 +52,7 @@ const createBoard = ()=>{
 
 const startGame = (event)=>{
     event.preventDefault();
+    ticTacToe.isReplay = false;
     ticTacToe.startGame();
 }
 

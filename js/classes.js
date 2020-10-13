@@ -114,18 +114,20 @@ class TicTacToe{
     startGame = () =>{
         this.board.reset();
         this.gameActive = true;
-        this.isReplay = false;
         this.curPlayer = player1;
         this.curMoves = 0;
         this.gameLog.value = `${this.curPlayer.name}'s turn`
+        if(this.isReplay === false){
+            this.moves = [];
+        };
     }
     
     /**
      * Plays back each move of the last played game, with 2 second delay betwen each move
      */
     replay = () =>{
-        this.startGame();
         this.isReplay = true;
+        this.startGame();
         this.moves.forEach((move,index)=>{
             console.log(move);
             console.log(index);
