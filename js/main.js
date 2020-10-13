@@ -12,7 +12,7 @@ let board;
 
 const onClickTileDivHandler = (event) =>{
     // if space clicked was a tile, attempt a tictactoe move
-    if(event.target.className === 'tile'){
+    if(event.target.classList[0] === 'tile'){
         ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
         //update player scores and tie
         scores[0].innerText = ticTacToe.player1.score;
