@@ -32,8 +32,12 @@ Once the initial JavaScript classes were made, I drew up a wire frame and made t
 ### Win Conditions
 To find a winner, I made a method in the Board class which looked at its Tiles to see if there were any pieces that were three in a row. It would check rows, then columns, and finally both diagonals. If a three in a row happened, then the current player would win, because you can only win on your own turn. This method would be called on every turn, and the game would continue if it returned nothing.
 
-## Gameplay
-Whenever the board was clicked
+### Gameplay
+Whenever the board was clicked, board would call tictactoe method and pass in event target as the parameter. TicTacToe object would then call board.findWinner() to determine if the move would end the game. Once the game ends, the result is displayed on the game log to the right.
+
+## Extras
+### Replay
+User can replay the last played game by clicking the replay button. Moves for each game are pushed into an array once they happen. If replay is clicked, those moves will be played in order, and other event handlers will be disabled to prevent them from interfering with the replay execution.
 
 ## WIP
 Currently working on the AI that would play a perfect game (draw or win every time).

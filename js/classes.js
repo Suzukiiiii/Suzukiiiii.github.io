@@ -32,6 +32,9 @@ class Board{
                 div.value = '';
                 div.classList.remove('X');
                 div.classList.remove('O');
+
+                div.classList.remove('X_Win');
+                div.classList.remove('O_Win');
             });
         });
     };
@@ -40,11 +43,15 @@ class Board{
     findWinner = () =>{
         
         const board = this.tiles;
-
+        let winClass;
         // Check Rows
         for(let i=0;i<3;i++){
             
             if(board[i][0].tileDiv.value===board[i][1].tileDiv.value && board[i][1].tileDiv.value=== board[i][2].tileDiv.value){
+                winClass = board[i][0].tileDiv.value+'_Win';
+                board[i][0].tileDiv.classList.add(winClass);
+                board[i][1].tileDiv.classList.add(winClass);
+                board[i][2].tileDiv.classList.add(winClass);
                 return board[i][0].tileDiv.value;
             }
         }
@@ -52,15 +59,36 @@ class Board{
         // Check Column
         for(let i=0;i<3;i++){
             if(board[0][i].tileDiv.value===board[1][i].tileDiv.value && board[1][i].tileDiv.value === board[2][i].tileDiv.value){
+                winClass = board[0][i].tileDiv.value+'_Win';
+                board[0][i].tileDiv.classList.add(winClass);
+                board[1][i].tileDiv.classList.add(winClass);
+                board[2][i].tileDiv.classList.add(winClass);
                 return board[0][i].tileDiv.value;
             }
         }
         
         // Check top left corner to bottom right corner
-        if(board[0][0].tileDiv.value=== board[1][1].tileDiv.value && board[1][1].tileDiv.value ===board[2][2].tileDiv.value) return board[0][0].tileDiv.value;
+        if(board[0][0].tileDiv.value=== board[1][1].tileDiv.value && board[1][1].tileDiv.value ===board[2][2].tileDiv.value){
+            winClass = board[1][1].tileDiv.value+'_Win';
+            
+            board[0][0].tileDiv.classList.add(winClass);
+            board[1][1].tileDiv.classList.add(winClass);
+            board[2][2].tileDiv.classList.add(winClass);
+            
+            return board[0][0].tileDiv.value;
+        } 
         
         // check bottom left corner to top right corner
-        if(board[0][2].tileDiv.value=== board[1][1].tileDiv.value&& board[1][1].tileDiv.value ===board[2][0].tileDiv.value) return board[0][2].tileDiv.value;
+        if(board[0][2].tileDiv.value=== board[1][1].tileDiv.value&& board[1][1].tileDiv.value ===board[2][0].tileDiv.value){
+            
+            winClass = board[1][1].tileDiv.value+'_Win';
+            
+            board[0][2].tileDiv.classList.add(winClass);
+            board[1][1].tileDiv.classList.add(winClass);
+            board[2][0].tileDiv.classList.add(winClass);
+
+            return board[0][2].tileDiv.value;
+        } 
 
         return 'no Winner :(';
     };

@@ -58,7 +58,12 @@ h3{
 .X{
     background-image: url("../assets/X.png");
 }
-
+.X_Win{
+    background-image: url("../assets/X_Win.png");
+}
 .O{
     background-image: url("../assets/O.png");
+}
+.O_Win{
+    background-image: url("../assets/O_Win.png");
 }
