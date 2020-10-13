@@ -11,7 +11,6 @@ class Board{
         this.tiles = tiles;
     };
 
-
     // go through each tile in board and return the tile object if their Div matches input Div
     // used for debugging
     findTileByTileDiv(tileDivIn){

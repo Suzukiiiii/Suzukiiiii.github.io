@@ -40,7 +40,14 @@ const createBoard = ()=>{
             
             // create Div, append to row, and add to tile array
             const tileDiv = document.createElement('div');
+
+            // set CSS classes
             tileDiv.setAttribute('class','tile');
+            if(i===0) tileDiv.classList.add('top');
+            if(i===2) tileDiv.classList.add('bottom');
+            if(j===0) tileDiv.classList.add('left');
+            if(j===2) tileDiv.classList.add('right');
+
             rowDiv.append(tileDiv);
             const tile = new Tile(tileDiv);
             tiles[i][j] = tile;

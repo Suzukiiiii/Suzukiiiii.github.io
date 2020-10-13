@@ -21,7 +21,6 @@ span{
     justify-content: center;
 }
 #board{
-    border: 5px solid black;
     display:flex;
     flex-direction: column;
 
@@ -44,7 +43,18 @@ h3{
     border: 5px solid black;
 
 }
-
+.top{
+    border-top: 0;
+}
+.bottom{
+    border-bottom: 0;
+}
+.left{
+    border-left: 0;
+}
+.right{
+    border-right: 0;
+}
 .X{
     background-image: url("../assets/X.png");
 }
