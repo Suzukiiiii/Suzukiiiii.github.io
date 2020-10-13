@@ -11,6 +11,10 @@ body{
     display: flex;
     justify-content: space-between;
 }
+#player{
+    display: flex;
+    justify-content: center;
+}
 #board{
     border: 5px solid black;
     display:flex;
