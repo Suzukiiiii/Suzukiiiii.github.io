@@ -121,7 +121,7 @@ class TicTacToe{
         //Check diagonal 1
 
         //Check diagonal 2
-        
+
 
         if(emptyCount === 1 && matchCount === 2){
             
@@ -186,26 +186,25 @@ class TicTacToe{
         this.isReplay = true;
         this.startGame();
         this.moves.forEach((move,index)=>{
-            setTimeout(() => { this.playerTurn(move.tile,move.value);}, (index+1)*2000);
+            setTimeout(() => { this.playerTurn(move.tile);}, (index+1)*2000);
         })
     }
     /**
      * 
      * @param {*} targetDiv 
-     * @param {*} value 
      */
-    playerTurn = (targetDiv,value) =>{
+    playerTurn = (targetDiv) =>{
         let scoreInc = 0;
         if(targetDiv.value === '' && this.gameActive){
             this.curMoves ++;
-            targetDiv.value = value;
-            targetDiv.classList.add(value);
+            targetDiv.value = this.curPlayer.value;
+            targetDiv.classList.add(this.curPlayer.value);
             
             if(this.isReplay === false){
-                this.moves.push(new Move(targetDiv,value));
+                this.moves.push(new Move(targetDiv,this.curPlayer.value));
                 scoreInc = 1; // only increment score if game is not a replay
             }
-            if(this.board.findWinner()===value){
+            if(this.board.findWinner()===this.curPlayer.value){
                 this.gameActive = false;
                 this.gameLog.value += `\n${this.curPlayer.name} wins!`;
                 this.curPlayer.score += scoreInc;
