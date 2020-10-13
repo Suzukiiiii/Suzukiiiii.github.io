@@ -102,8 +102,7 @@ class TicTacToe{
      * 
      * 
      */
-    startGame = (event) =>{
-        event.preventDefault();
+    startGame = () =>{
         this.board.reset();
         this.gameActive = true;
         this.isReplay = false;
@@ -118,7 +117,15 @@ class TicTacToe{
      * 
      * setTimeout(playGame(move.div,move.value))
      */
-
+    replay = () =>{
+        this.startGame();
+        this.isReplay = true;
+        this.moves.forEach((move,index)=>{
+            console.log(move);
+            console.log(index);
+            setTimeout(() => { this.playerTurn(move.tile,move.value);}, (index+1)*2000);
+        })
+    }
     /**
      * 
      * @param {*} targetDiv 

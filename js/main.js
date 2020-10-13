@@ -50,12 +50,17 @@ const createBoard = ()=>{
     return new Board(tiles);
 };
 
+const startGame = (event)=>{
+    event.preventDefault();
+    ticTacToe.startGame();
+}
+
 const init = () =>{
     
     board = createBoard();
     ticTacToe = new TicTacToe(player1,player2,board,gameLog);
     boardDiv.addEventListener('click',onClickTileDivHandler);
-    gameStartButton.addEventListener('click',(ticTacToe.startGame));
+    gameStartButton.addEventListener('click',startGame);
     
 }
 
