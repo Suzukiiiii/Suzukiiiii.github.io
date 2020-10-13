@@ -12,9 +12,9 @@ let board;
 const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 
-// calls playerTurn() if tile was clicked
 const onClickTileDivHandler = (event) =>{
 
+    // if space clicked was a tile, attempt a tictactoe move
     if(event.target.className === 'tile'){
         ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
         //update player scores and tie

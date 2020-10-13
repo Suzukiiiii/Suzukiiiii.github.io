@@ -76,7 +76,14 @@ class Player{
     
 };
 
-//
+class Move{
+    constructor(tile,value){
+        this.tile = tile;
+        this.value = value;
+    }
+}
+
+// An object to represent the Tic Tac Toe game
 class TicTacToe{
     constructor(player1,player2,board,gameLog){
         this.player1 = player1;
@@ -88,6 +95,7 @@ class TicTacToe{
         this.moves = []; // array of moves to be played in order
         this.curMoves = 0;
         this.gameLog = gameLog;
+        this.isReplay = false;
     };
 
     /**
@@ -98,6 +106,7 @@ class TicTacToe{
         event.preventDefault();
         this.board.reset();
         this.gameActive = true;
+        this.isReplay = false;
         this.curPlayer = player1;
         this.curMoves = 0;
         this.gameLog.value = `${this.curPlayer.name}'s turn`
@@ -122,6 +131,9 @@ class TicTacToe{
             targetDiv.value = value;
             targetDiv.classList.add(value);
             
+            if(this.isReplay === false){
+                this.moves.push(new Move(targetDiv,value));
+            }
             if(this.board.findWinner()===value){
                 this.gameActive = false;
                 this.gameLog.value += `\n${this.curPlayer.name} wins!`;
