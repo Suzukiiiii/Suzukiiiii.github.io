@@ -4,12 +4,17 @@ body{
     flex-direction: row;
     justify-content: space-between;
 }
+span{
+    color: white;
+}
 #gamePanel{
     display: flex;
+    flex-direction: column;
 }
 #players{
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
 }
 #player{
     display: flex;

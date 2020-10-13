@@ -14,7 +14,6 @@ const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 
 const onClickTileDivHandler = (event) =>{
-    console.log(event.target);
     // if space clicked was a tile, attempt a tictactoe move
     if(event.target.className === 'tile'){
         ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
@@ -74,5 +73,3 @@ const init = () =>{
 }
 
 init();
-
-console.log(scores);

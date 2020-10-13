@@ -99,6 +99,13 @@ class TicTacToe{
     };
 
     /**
+     * suggest optimal move for current player
+     */
+    suggestMove = () =>{
+        // first move should always be corner
+    }
+
+    /**
      * swap the X and O values of players
      */
     swapPieces = () =>{
@@ -129,8 +136,6 @@ class TicTacToe{
         this.isReplay = true;
         this.startGame();
         this.moves.forEach((move,index)=>{
-            console.log(move);
-            console.log(index);
             setTimeout(() => { this.playerTurn(move.tile,move.value);}, (index+1)*2000);
         })
     }
@@ -140,7 +145,7 @@ class TicTacToe{
      * @param {*} value 
      */
     playerTurn = (targetDiv,value) =>{
-
+        let scoreInc = 0;
         if(targetDiv.value === '' && this.gameActive){
             this.curMoves ++;
             targetDiv.value = value;
@@ -148,16 +153,17 @@ class TicTacToe{
             
             if(this.isReplay === false){
                 this.moves.push(new Move(targetDiv,value));
+                scoreInc = 1; // only increment score if game is not a replay
             }
             if(this.board.findWinner()===value){
                 this.gameActive = false;
                 this.gameLog.value += `\n${this.curPlayer.name} wins!`;
-                this.curPlayer.score ++;
+                this.curPlayer.score += scoreInc;
             }
             if(this.curMoves === 9 && this.gameActive){
                 this.gameLog.value += '\nGame is a draw!';
                 this.gameActive = false;
-                this.tie ++;
+                this.tie += scoreInc;
             }
             if (this.curPlayer === this.player1 && this.gameActive){
                 this.gameLog.value += `\n${this.player2.name}'s turn`;
