@@ -125,7 +125,7 @@ class TicTacToe{
     /**
      * Plays back each move of the last played game, with 2 second delay betwen each move
      */
-    replay = () =>{
+    replayGame = () =>{
         this.isReplay = true;
         this.startGame();
         this.moves.forEach((move,index)=>{

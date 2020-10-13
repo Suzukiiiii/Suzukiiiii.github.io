@@ -4,6 +4,7 @@ console.log('connected');
 const boardDiv = document.querySelector('#board');
 const gameLog = document.querySelector('#gamelog');
 const gameStartButton = document.querySelector('#startGame');
+const replayGameButton = document.querySelector('#replayGame');
 const scores = document.querySelectorAll('.score');
 
 //TicTacToe Objects
@@ -13,7 +14,7 @@ const player1 = new Player('player1','X');
 const player2 = new Player('player2','O');
 
 const onClickTileDivHandler = (event) =>{
-
+    console.log(event.target);
     // if space clicked was a tile, attempt a tictactoe move
     if(event.target.className === 'tile'){
         ticTacToe.playerTurn(event.target,ticTacToe.curPlayer.value);
@@ -52,16 +53,23 @@ const createBoard = ()=>{
 
 const startGame = (event)=>{
     event.preventDefault();
+    boardDiv.addEventListener('click',onClickTileDivHandler);
     ticTacToe.isReplay = false;
     ticTacToe.startGame();
+}
+
+const replayGame = (event)=>{
+    event.preventDefault();
+    boardDiv.removeEventListener('click',onClickTileDivHandler);
+    ticTacToe.replayGame();
 }
 
 const init = () =>{
     
     board = createBoard();
     ticTacToe = new TicTacToe(player1,player2,board,gameLog);
-    boardDiv.addEventListener('click',onClickTileDivHandler);
     gameStartButton.addEventListener('click',startGame);
+    replayGameButton.addEventListener('click',replayGame);
     
 }
 
