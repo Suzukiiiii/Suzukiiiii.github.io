@@ -19,5 +19,7 @@ During gameplay, click on one of the empty tiles to mark it with your piece (X o
 You may also replay the last played game by clicking the Replay Last Game button. This will play all the moves of your previous game, with a delay of 2 seconds.
 
 ## Wireframe
-
 ![wireframe](/assets/TTT_WireFrame.png)
+
+## Development Process
+I took an object oriented approach to this project so I could separate the game logic from the DOM manipulation and event handling.

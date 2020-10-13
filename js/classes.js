@@ -87,11 +87,11 @@ class Move{
 
 // An object to represent the Tic Tac Toe game
 class TicTacToe{
-    constructor(player1,player2,board,gameLog){
-        this.player1 = player1;
-        this.player2 = player2;
-        this.firstPlayer = player1;
-        this.curPlayer = player1;
+    constructor(board,gameLog){
+        this.player1 = new Player('player1','X');
+        this.player2 = new Player('player2','O');
+        this.firstPlayer = this.player1;
+        this.curPlayer = this.player1;
         this.tie = 0;
         this.board = board;
         this.gameActive = false;

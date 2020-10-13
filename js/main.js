@@ -9,8 +9,6 @@ const firstPlayerRadio = document.getElementsByName('first');
 //TicTacToe Objects
 let ticTacToe;
 let board;
-const player1 = new Player('player1','X');
-const player2 = new Player('player2','O');
 
 const onClickTileDivHandler = (event) =>{
     // if space clicked was a tile, attempt a tictactoe move
@@ -88,7 +86,7 @@ const replayGame = (event)=>{
 const init = () =>{
     
     board = createBoard();
-    ticTacToe = new TicTacToe(player1,player2,board,gameLog);
+    ticTacToe = new TicTacToe(board,gameLog);
     gameStartButton.addEventListener('click',startButtonClicked);
     replayGameButton.addEventListener('click',replayGame);
     
