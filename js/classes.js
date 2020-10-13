@@ -121,7 +121,7 @@ class TicTacToe{
         //Check diagonal 1
 
         //Check diagonal 2
-
+        
 
         if(emptyCount === 1 && matchCount === 2){
             
