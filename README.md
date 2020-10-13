@@ -17,3 +17,7 @@ To start, decide which player goes first with the radio buttons (player 1 is X a
 During gameplay, click on one of the empty tiles to mark it with your piece (X or O). If you click on a tile that was already selected, or if you click on a tile while a game is not active, nothing will happen. After the game, your score will be updated depending on who one or if there was a tie.
 
 You may also replay the last played game by clicking the Replay Last Game button. This will play all the moves of your previous game, with a delay of 2 seconds.
+
+## Wireframe
+
+![wireframe](/assets/TTT_WireFrame.png)
