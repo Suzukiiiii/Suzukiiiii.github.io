@@ -160,6 +160,11 @@ class TicTacToe{
         this.player2.value = tmp;
     }
 
+    // Swap current player
+    swapCurrentPlayer = () =>{
+        if (this.curPlayer === this.player1) this.curPlayer = this.player2;
+        else this.curPlayer = this.player1;
+    }
     /**
      * 
      * Sets inital game state
@@ -211,18 +216,10 @@ class TicTacToe{
                 this.gameActive = false;
                 this.tie += scoreInc;
             }
-            if (this.curPlayer === this.player1 && this.gameActive){
-                this.gameLog.value += `\n${this.player2.name}'s turn`;
-                this.curPlayer = this.player2;
+            if (this.gameActive){
+                this.swapCurrentPlayer();
+                this.gameLog.value += `\n${this.curPlayer.name}'s turn`;
             }
-            else if(this.curPlayer === this.player2 && this.gameActive){
-                this.gameLog.value += `\n${this.player1.name}'s turn`;
-                this.curPlayer = this.player1;
-            } 
         }
     }
-
-    /**
-     * findwinner?
-     */
 };
