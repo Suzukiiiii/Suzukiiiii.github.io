@@ -39,6 +39,8 @@ Whenever the board was clicked, board would call tictactoe method and pass in ev
 ### Replay
 User can replay the last played game by clicking the replay button. Moves for each game are pushed into an array once they happen. If replay is clicked, those moves will be played in order, and other event handlers will be disabled to prevent them from interfering with the replay execution.
 
+### Highlight winning tiles
+If the game ends with a winner, the winning tiles will change.
+
 ## WIP
 Currently working on the AI that would play a perfect game (draw or win every time).
-May indicate the winning tiles

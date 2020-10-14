@@ -92,6 +92,10 @@ class Board{
 
         return 'no Winner :(';
     };
+
+    getCenter = ()=>{
+        if(this.tiles[1][1].tileDiv.value === '') return this.tiles[1][1].tileDiv;
+    }
 };
 
 // A player represents the user playing the game.
@@ -134,16 +138,57 @@ class TicTacToe{
      * return the empty tile
      * 
      * This will handle win and block for tic tac toe strategy
-     * Prioritize currentPlayer's winning Tile, but if current player doesnt have one, then return any winning tile
      */
     findWinningMove =()=>{
         const myBoard = this.board.tiles;
+        const curPlayerVal = this.curPlayer.value;
         let emptyCount = 0;
         let matchCount = 0;
         let winningTile;
+        
 
         //Check rows
+        for(let i=0;i<3;i++){
+            console.log('in row loop:'+i);
+            if(myBoard[i][0].tileDiv.value === ''){
+                if(myBoard[i][1].tileDiv.value ===myBoard[i][2].tileDiv.value 
+                    && myBoard[i][1].tileDiv.value != ''){
+                        // write tile if null
+                        if(winningTile === undefined){
+                            winningTile = myBoard[i][0].tileDiv;
+                            console.log('winng tile is null');
+                            console.log(winningTile);
+                        }
+                        
+                        // Overwrite tile if winning move is for current player
+                        if(curPlayerVal === myBoard[i][1].tileDiv.value){
+                            console.log(curPlayerVal);
+                            console.log(myBoard[i][1]);
+                            winningTile = myBoard[i][0].tileDiv;
+                            console.log(' winning tile matches curplayer');
+                            console.log(winningTile);
+                        }
+                        
+                }
 
+            }
+            if(myBoard[i][1].tileDiv.value === ''){
+                
+
+            }
+            if(myBoard[i][2].tileDiv.value === ''){
+                
+
+            }
+            
+            
+            // if((myBoard[i][0].value === myBoard[i][1].value && myBoard[i][2].value === null) ||
+            // (myBoard[i][0].value === myBoard[i][2].value && myBoard[i][1].value === null)||
+            // (myBoard[i][1].value === myBoard[i][2].value && myBoard[i][0].value === null))
+            // {
+            //     if(winningTile === '') winningTile =
+            // }
+        }
         //Check columns
 
         //Check diagonal 1
@@ -151,11 +196,7 @@ class TicTacToe{
         //Check diagonal 2
 
 
-        if(emptyCount === 1 && matchCount === 2){
-            
-            // winningTile = emptyTile
-            return winningTile;
-        }
+       return winningTile;
         
     }
     /*
