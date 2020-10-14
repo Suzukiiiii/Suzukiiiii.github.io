@@ -92,9 +92,9 @@ class Board{
             if(board[1][1].tileDiv.value!==''){
                 winClass = board[1][1].tileDiv.value+'_Win';
             
-                board[0][0].tileDiv.classList.add(winClass);
+                board[0][2].tileDiv.classList.add(winClass);
                 board[1][1].tileDiv.classList.add(winClass);
-                board[2][2].tileDiv.classList.add(winClass);
+                board[2][0].tileDiv.classList.add(winClass);
             }
 
             return board[0][2].tileDiv.value;
@@ -151,7 +151,6 @@ class TicTacToe{
         let col1;
         let col2;
         const myBoard = this.board.tiles;
-        const curPlayerVal = this.curPlayer.value;
 
         let winningTile;
 
@@ -168,40 +167,104 @@ class TicTacToe{
             col1 = 0;
             col2 = 1;
         }
-        console.log('check column: '+columnIndex);
-        console.log('other column:' +col1);
-        console.log('other column:' +col2);
-
 
         if(myBoard[i][columnIndex].tileDiv.value === ''){
-            console.log('myBOard'+i+columnIndex+'is null');
 
-            console.log('col1: '+myBoard[i][col1].tileDiv.value);
-            console.log('col2: '+myBoard[i][col2].tileDiv.value );
             if(myBoard[i][col1].tileDiv.value === myBoard[i][col2].tileDiv.value 
                 && myBoard[i][col1].tileDiv.value !== ''){
-                    // // write tile if null
-                    // if(winningTile === undefined){
-                    //     winningTile = myBoard[i][0].tileDiv;
-                    //     console.log('winng tile is null');
-                    //     console.log(winningTile);
-                    // }
-                    
-                    // // Overwrite tile if winning move is for current player
-                    // if(curPlayerVal === myBoard[i][1].tileDiv.value){
-                    //     console.log(curPlayerVal);
-                    //     console.log(myBoard[i][1]);
-                    //     winningTile = myBoard[i][0].tileDiv;
-                    //     console.log(' winning tile matches curplayer');
-                    //     console.log(winningTile);
-                    // }
                     winningTile = myBoard[i][columnIndex].tileDiv;
-                    console.log(winningTile);
+            }
+            return winningTile;
+        }
+    }
+    /**
+     * Given a cell index, return that cell if it is empty, and if its columnmates are not null and have the same value
+     * @param {*} rowIndex 
+     * @param {*} i 
+     */
+    findWinningMoveInColumn(rowIndex,i){
+        let row1;
+        let row2;
+        const myBoard = this.board.tiles;
+
+        let winningTile;
+
+        // set up other rows
+        if(rowIndex === 0){
+            row1 = 1;
+            row2 = 2;
+        }
+        else if (rowIndex === 1){
+            row1 = 0;
+            row2 = 2;
+        }
+        else if(rowIndex === 2){
+            row1 = 0;
+            row2 = 1;
+        }
+
+        if(myBoard[rowIndex][i].tileDiv.value === ''){
+
+            if(myBoard[row1][i].tileDiv.value === myBoard[row2][i].tileDiv.value 
+                && myBoard[row1][i].tileDiv.value !== ''){
+                    winningTile = myBoard[rowIndex][i].tileDiv;
             }
             return winningTile;
         }
     }
 
+    findWinningMoveInDiagonal(i,j,dir){
+        let i1;
+        let i2;
+
+        let j1;
+        let j2;
+
+        const myBoard = this.board.tiles;
+        // set up diagonal mates
+        if(dir = 'b'){
+            // [0,0][1,1][2,2] '\' diagonal
+            if(i === 0){
+                i1 = 1;
+                j1 = 1;
+                i2 = 2;
+                j2 = 2;
+            }
+            if(i === 1){
+                i1 = 0;
+                j1 = 0;
+                i2 = 2;
+                j2 = 2;
+            }
+            if(i ===2){
+                i1 = 0;
+                j1 = 0;
+                i2 = 1;
+                j2 = 1; 
+            }
+        }
+        else{
+            // [2,0][1,1][0,2] diagonal
+            if(i === 0){
+                i1 = 1;
+                j1 = 1;
+                i2 = 2;
+                j2 = 0;
+            }
+            if(i === 1){
+                i1 = 0;
+                j1 = 0;
+                i2 = 2;
+                j2 = 2;
+            }
+            if(i ===2){
+                i1 = 0;
+                j1 = 0;
+                i2 = 1;
+                j2 = 1; 
+            }
+        }
+    }
     /**
      * 
      * If two tiles in a row, column or diagonal have the same value and one is empty,
@@ -214,12 +277,11 @@ class TicTacToe{
         const curPlayerVal = this.curPlayer.value;
 
         let winningTile;
-        
+        let tmpTile;
 
         //Check rows
         for(let i=0;i<3;i++){
-            console.log('in row loop:'+i);
-            let tmpTile;
+            
             
             tmpTile = this.findWinningMoveInRow(i,0);
 
@@ -230,13 +292,10 @@ class TicTacToe{
                 }
             }
             
-            console.log('Tmp Tile: '+tmpTile);
             if(tmpTile!==undefined){
                 // if winning tile is null, populate it
                 if(winningTile === undefined){
                     winningTile = tmpTile;
-
-                    console.log('win tile is null. new val: '+winningTile);
                 }
                 // if current player value is not equal to current winner, over write
                 else if(curPlayerVal !== winningTile.value){
@@ -246,7 +305,28 @@ class TicTacToe{
             
         }
         //Check columns
+        for(let i=0;i<3;i++){
+            tmpTile = this.findWinningMoveInColumn(0,i);
+            if(tmpTile === undefined){
+                tmpTile = this.findWinningMoveInColumn(1,i);
+                if(tmpTile === undefined){
+                    tmpTile = this.findWinningMoveInColumn(2,i);
+                }
+            }
 
+            if(tmpTile!==undefined){
+                // if winning tile is null, populate it
+                if(winningTile === undefined){
+                    winningTile = tmpTile;
+                    console.log('[colum]win tile nul: '+winningTile.value)
+                }
+                // if current player value is not equal to current winner, over write
+                else if(curPlayerVal !== winningTile.value){
+                    winningTile = tmpTile;
+                    console.log('[colum]win tile overwrite: '+winningTile.value)
+                }
+            }
+        }
         //Check diagonal 1
 
         //Check diagonal 2
