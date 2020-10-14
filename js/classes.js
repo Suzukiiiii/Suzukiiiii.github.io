@@ -230,14 +230,20 @@ class TicTacToe{
                 }
             }
             
-            // if winning tile is null, populate it
-            if(winningTile === undefined){
-                winningTile = tmpTile;
+            console.log('Tmp Tile: '+tmpTile);
+            if(tmpTile!==undefined){
+                // if winning tile is null, populate it
+                if(winningTile === undefined){
+                    winningTile = tmpTile;
+
+                    console.log('win tile is null. new val: '+winningTile);
+                }
+                // if current player value is not equal to current winner, over write
+                else if(curPlayerVal !== winningTile.value){
+                    winningTile = tmpTile;
+                }
             }
-            // if current player value is not equal to current winner, over write
-            else if(curPlayerVal !== winningTile.value){
-                winningTile = tmpTile;
-            }
+            
         }
         //Check columns
 
@@ -245,7 +251,7 @@ class TicTacToe{
 
         //Check diagonal 2
 
-
+        console.log('return: '+winningTile);
        return winningTile;
         
     }
